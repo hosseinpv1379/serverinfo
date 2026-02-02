@@ -47,5 +47,6 @@ git remote add origin "$REMOTE"
 # پوش
 echo "در حال ارسال به گیت‌هاب..."
 git push -u origin main
+git push origin main:master 2>/dev/null || true  # همگام‌سازی master برای سازگاری
 
 echo "✅ انجام شد: https://github.com/${USERNAME}/${REPO_NAME}"
