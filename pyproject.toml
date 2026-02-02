@@ -1,0 +1,37 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "serverinfo"
+version = "0.1.0"
+description = "مانیتورینگ سرعت شبکه سرورها - مشابه nload"
+readme = "README.md"
+requires-python = ">=3.9"
+license = {text = "MIT"}
+authors = []
+keywords = ["network", "monitoring", "nload", "bandwidth"]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Environment :: Console",
+    "Intended Audience :: System Administrators",
+    "Programming Language :: Python :: 3",
+]
+dependencies = [
+    "psutil>=5.9.0",
+    "fastapi>=0.104.0",
+    "uvicorn[standard]>=0.24.0",
+    "httpx>=0.25.0",
+    "rich>=13.0.0",
+]
+
+[project.optional-dependencies]
+server = ["psutil", "fastapi", "uvicorn[standard]"]
+client = ["httpx", "rich"]
+
+[project.scripts]
+serverinfo-server = "server:main"
+serverinfo-client = "client:main"
+
+[tool.setuptools]
+py-modules = ["server", "client"]
